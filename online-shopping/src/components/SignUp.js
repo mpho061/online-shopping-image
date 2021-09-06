@@ -5,6 +5,9 @@ import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import { useForm } from "react-hook-form";
 import { db, auth } from '../Firebase';
+import {Link} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+
 const useStyles = makeStyles({
     root: {
         background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
@@ -21,7 +24,7 @@ const useStyles = makeStyles({
 const SignUp = () => {
     const classes = useStyles();
     const { register, handleSubmit, formState: { errors } } = useForm();
-
+    let history= useHistory();
 
 
     const onSubmit = async (data) => {
@@ -46,6 +49,9 @@ const SignUp = () => {
             console.error(error);
             alert(error.nessage)
         }
+    }
+    function login(){
+        history.push("/SignIn");
     }
     return (
             <div className="container">
@@ -95,8 +101,10 @@ const SignUp = () => {
                         {...register("contact", { required: { value: true, message: "please enter your contact" } })}
                     />
                     {errors.contact && <p>{errors.contact.message}</p>}
-
-                    <div className="spaceL"><Button type="submit" className={classes.root}>Sign Up</Button></div>
+                    <div className="spaceL">
+                        <Button type="submit" className={classes.root}>Sign Up</Button>
+                        <Link href="#" onClick={()=>login()}>Have an account? Login</Link>
+                    </div>
                     
                 </form>
 
