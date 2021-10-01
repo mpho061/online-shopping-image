@@ -6,3 +6,4 @@ The react application that i have developed, will be used by users who want to b
 3. Afterward there is a developed button that is used for add into card.
 4. The cart page allows you to see what you bought in format list
 Below its link to my website
+https://my-application-f160d.web.app/Cart
